@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter_67_2/screen/item.dart';
 
 // Step 4: sperate the home widget into a separate file
 import 'screen/home.dart';
@@ -26,29 +27,19 @@ void main() {
 
 
   // STEP 2:  stateless widget
-  runApp(
-    MaterialApp(
-      title: "My Title",
-      home: Scaffold(
+  var scaffold = Scaffold(
         appBar: AppBar(
           title: Text("My App"),
           backgroundColor: Colors.pinkAccent,
           centerTitle: true,
         ),
-        body: const Home(),
-      ),
+        body:  Item(),
+      );
+  runApp(
+    MaterialApp(
+      title: "My Title",
+      home: scaffold,
     ),
   );
 }
 
-// Step 2: stateless widget
-// class Home extends StatelessWidget {
-//   const Home({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text("Hello Flutter");
-//   }
-// }
-
-//Step 3: container widget
