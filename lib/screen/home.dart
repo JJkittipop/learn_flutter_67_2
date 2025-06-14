@@ -7,97 +7,19 @@ class Home extends StatelessWidget {
 // Step 5 container, column,row , main axis, cross axis
   @override
   Widget build(BuildContext context) {
-  //   return Column(
-  //     //mainAxisAlignment: MainAxisAlignment.start,
-  //     //mainAxisAlignment: MainAxisAlignment.center,
-  //     //mainAxisAlignment: MainAxisAlignment.end,
-  //     //mainAxisAlignment:  MainAxisAlignment.spaceBetween,
-  //     //mainAxisAlignment: MainAxisAlignment.spaceAround,
-  //     //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //     mainAxisAlignment:  MainAxisAlignment.spaceBetween,
-  //     crossAxisAlignment: CrossAxisAlignment.stretch,
-  //     children: [
-  //       Container(color: const Color.fromARGB(255, 248, 163, 5),
-  //       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-  //       child: Text(
-  //         "Hello Flutter",
-  //         style: TextStyle(
-  //           fontSize: 20, 
-  //           letterSpacing: 3,
-  //           color: Colors.white,
-  //       ),
-  //       ),
-  //       ),
-  //        Container(color: const Color.fromARGB(255, 248, 163, 5),
-  //       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-  //       child: Text(
-  //         "Hello Flutter",
-  //         style: TextStyle(       
-  //           fontSize: 20, 
-  //           letterSpacing: 3,
-  //           color: Colors.white,
-  //       ),
-  //       ),
-  //       ),
-  //        Container(color: const Color.fromARGB(255, 248, 163, 5),
-  //       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-  //       child: Text(
-  //         "Hello Flutter",
-  //         style: TextStyle(
-  //           fontSize: 20, 
-  //           letterSpacing: 3,
-  //           color: Colors.white,
-  //       ),
-  //       ),
-  //       ),
-  //     ],
-  //   );
-  // }
-  
-  return Row(
-      //mainAxisAlignment: MainAxisAlignment.start,
-      //mainAxisAlignment: MainAxisAlignment.center,
-      //mainAxisAlignment: MainAxisAlignment.end,
-      //mainAxisAlignment:  MainAxisAlignment.spaceBetween,
-      //mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+    // Step 6: Image widgets
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(color: const Color.fromARGB(255, 248, 163, 5),
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-        child: Text(
-          "Hello ",
-          style: TextStyle(
-            fontSize: 20, 
-            letterSpacing: 3,
-            color: Colors.white,
-        ),
-        ),
-        ),
-         Container(color: const Color.fromARGB(255, 248, 163, 5),
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-        child: Text(
-          "Hello ",
-          style: TextStyle(       
-            fontSize: 20, 
-            letterSpacing: 3,
-            color: Colors.white,
-        ),
-        ),
-        ),
-         Container(color: const Color.fromARGB(255, 248, 163, 5),
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-        child: Text(
-          "Hello ",
-          style: TextStyle(
-            fontSize: 20, 
-            letterSpacing: 3,
-            color: Colors.white,
-        ),
-        ),
-        ),
-      ],
-    );
+  Image.asset("assets/images/Dogs.jpg", width: 150, height: 150),
+  const SizedBox(height: 10),
+  Image.network(
+    "https://th.images.search.yahoo.com/search/images;_ylt=Awrx.HisK01oQ94DAImdSwx.;_ylu=c2VjA3NlYXJjaARzbGsDYnV0dG9u;_ylc=X1MDMjExNDczNTAwNQRfcgMyBGZyA21jYWZlZQRmcjIDcDpzLHY6aSxtOnNiLXRvcARncHJpZANXVFJjU3drOFRicXpvNzZxUHRCNjRBBG5fcnNsdAMwBG5fc3VnZwMxMARvcmlnaW4DdGguaW1hZ2VzLnNlYXJjaC55YWhvby5jb20EcG9zAzAEcHFzdHIDBHBxc3RybAMwBHFzdHJsAzYEcXVlcnkDJUUwJUI4JTk1JUUwJUI5JTg5JUUwJUI4JTk5JUUwJUI5JTg0JUUwJUI4JUExJUUwJUI5JTg5BHRfc3RtcAMxNzQ5ODg3OTI2?p=%E0%B8%95%E0%B9%89%E0%B8%99%E0%B9%84%E0%B8%A1%E0%B9%89&fr=mcafee&fr2=p%3As%2Cv%3Ai%2Cm%3Asb-top&ei=UTF-8&x=wrt&type=E210TH91215G0&imgsz=small#id=6&iurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D100067733019737&action=click",
+    width: 150,
+    height: 150,
+  )
+  ],
+);
   }
 }
