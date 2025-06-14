@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class Home extends StatelessWidget {
   const Home({super.key});
 
+// Step 5 container, column, main axis, cross axis
   @override
   Widget build(BuildContext context) {
     // //return Container(color: Colors.blueAccent , width 300, height: 300);
