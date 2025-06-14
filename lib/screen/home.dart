@@ -4,26 +4,100 @@ import 'package:flutter/material.dart';
 class Home extends StatelessWidget {
   const Home({super.key});
 
-// Step 5 container, column, main axis, cross axis
+// Step 5 container, column,row , main axis, cross axis
   @override
   Widget build(BuildContext context) {
-    // //return Container(color: Colors.blueAccent , width 300, height: 300);
-    // return Container(color: Colors.blueAccent, margin: EdgeInsets.all(10));
-    // return Container(color: Colors.blueAccent, 
-    // margin: EdgeInsets.fromLTRB(5, 10, 15, 20),
-    // ) ;
-    return Center(
-      child: Container(
-    color: Colors.blueAccent,
-    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-    padding: EdgeInsets.all(20),
-    child: Text(
-      "Hello Flutter",
-      style: TextStyle(
-        fontSize: 30, letterSpacing: 3),
-      ),
-    ),
+  //   return Column(
+  //     //mainAxisAlignment: MainAxisAlignment.start,
+  //     //mainAxisAlignment: MainAxisAlignment.center,
+  //     //mainAxisAlignment: MainAxisAlignment.end,
+  //     //mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+  //     //mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //     //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //     mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+  //     crossAxisAlignment: CrossAxisAlignment.stretch,
+  //     children: [
+  //       Container(color: const Color.fromARGB(255, 248, 163, 5),
+  //       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+  //       child: Text(
+  //         "Hello Flutter",
+  //         style: TextStyle(
+  //           fontSize: 20, 
+  //           letterSpacing: 3,
+  //           color: Colors.white,
+  //       ),
+  //       ),
+  //       ),
+  //        Container(color: const Color.fromARGB(255, 248, 163, 5),
+  //       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+  //       child: Text(
+  //         "Hello Flutter",
+  //         style: TextStyle(       
+  //           fontSize: 20, 
+  //           letterSpacing: 3,
+  //           color: Colors.white,
+  //       ),
+  //       ),
+  //       ),
+  //        Container(color: const Color.fromARGB(255, 248, 163, 5),
+  //       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+  //       child: Text(
+  //         "Hello Flutter",
+  //         style: TextStyle(
+  //           fontSize: 20, 
+  //           letterSpacing: 3,
+  //           color: Colors.white,
+  //       ),
+  //       ),
+  //       ),
+  //     ],
+  //   );
+  // }
+  
+  return Row(
+      //mainAxisAlignment: MainAxisAlignment.start,
+      //mainAxisAlignment: MainAxisAlignment.center,
+      //mainAxisAlignment: MainAxisAlignment.end,
+      //mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+      //mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(color: const Color.fromARGB(255, 248, 163, 5),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        child: Text(
+          "Hello ",
+          style: TextStyle(
+            fontSize: 20, 
+            letterSpacing: 3,
+            color: Colors.white,
+        ),
+        ),
+        ),
+         Container(color: const Color.fromARGB(255, 248, 163, 5),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        child: Text(
+          "Hello ",
+          style: TextStyle(       
+            fontSize: 20, 
+            letterSpacing: 3,
+            color: Colors.white,
+        ),
+        ),
+        ),
+         Container(color: const Color.fromARGB(255, 248, 163, 5),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        child: Text(
+          "Hello ",
+          style: TextStyle(
+            fontSize: 20, 
+            letterSpacing: 3,
+            color: Colors.white,
+        ),
+        ),
+        ),
+      ],
     );
-
   }
 }
