@@ -38,11 +38,25 @@ void main() {
 }
 
 // Step 2: stateless widget
+// class Home extends StatelessWidget {
+//   const Home({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Text("Hello Flutter");
+//   }
+// }
+
+//Step 3: container widget
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Text("Hello Flutter");
+    // //return Container(color: Colors.blueAccent , width 300, height: 300);
+    // return Container(color: Colors.blueAccent, margin: EdgeInsets.all(10));
+    return Container(color: Colors.blueAccent, 
+    margin: EdgeInsets.fromLTRB(5, 10, 15, 20),
+    ) ;
   }
 }
