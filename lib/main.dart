@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter_67_2/screen/addForm.dart';
 import 'package:learn_flutter_67_2/screen/item.dart';
 
 // Step 4: sperate the home widget into a separate file
@@ -27,19 +28,22 @@ void main() {
 
 
   // STEP 2:  stateless widget
-  var scaffold = Scaffold(
-        appBar: AppBar(
-          title: Text("My App"),
-          backgroundColor: Colors.pinkAccent,
-          centerTitle: true,
-        ),
-        body:  Item(),
-      );
-  runApp(
-    MaterialApp(
-      title: "My Title",
-      home: scaffold,
-    ),
-  );
+  // var scaffold = Scaffold(
+  //       appBar: AppBar(
+  //         title: Text("My App"),
+  //         backgroundColor: Colors.pinkAccent,
+  //         centerTitle: true,
+  //       ),
+  //       body:  Item(),
+  //     );
+  // runApp(
+  //   MaterialApp(
+  //     title: "My Title",
+  //     home: scaffold,
+  //   ),
+  // );
+
+  // Step 12: Te
+  runApp(const AddForm());
 }
 
