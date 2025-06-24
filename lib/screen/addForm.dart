@@ -1,8 +1,24 @@
-//Step 15
-
-
 import 'package:flutter/material.dart';
 import 'package:learn_flutter_67_2/models/person.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Person App',
+      theme: ThemeData(
+        primarySwatch: Colors.pink,
+      ),
+      home: const AddForm(),  // ครอบด้วย MaterialApp แล้ว
+    );
+  }
+}
 
 class AddForm extends StatefulWidget {
   const AddForm({super.key});
@@ -12,45 +28,81 @@ class AddForm extends StatefulWidget {
 }
 
 class _AddFormState extends State<AddForm> {
-  // ตัวแปรเก็บค่าจากฟอร์ม
-  String? name;
-  String? age;
-  Job? selectedJob;
   final _formKey = GlobalKey<FormState>();
-  String _name = '';
-  int _age = 20;
-  Job _job = Job.doctor;
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+
+  Job? _selectedJob = Job.doctor;
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _ageController.dispose();
+    super.dispose();
+  }
+
+  void _submitForm() {
+    if (_formKey.currentState!.validate()) {
+      final String name = _nameController.text.trim();
+      final int age = int.parse(_ageController.text.trim());
+
+      personList.add(Person(name: name, age: age, job: _selectedJob!));
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Data saved successfully")),
+      );
+
+      _formKey.currentState!.reset();
+      _nameController.clear();
+      _ageController.clear();
+      setState(() {
+        _selectedJob = Job.doctor;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Add Person",
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Add Person"),
-          backgroundColor: Colors.pinkAccent,
-          centerTitle: true,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Add Person"),
+        backgroundColor: Colors.pinkAccent,
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
           child: Column(
             children: [
               TextFormField(
+                controller: _nameController,
                 decoration: const InputDecoration(
                   labelText: 'Name',
                 ),
-                onChanged: (value) {
-                  name = value;
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
                 },
               ),
               const SizedBox(height: 20),
               TextFormField(
+                controller: _ageController,
                 decoration: const InputDecoration(
                   labelText: 'Age',
                 ),
                 keyboardType: TextInputType.number,
-                onChanged: (value) {
-                  age = value;
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your age';
+                  }
+                  if (int.tryParse(value) == null) {
+                    return 'Please enter a valid number';
+                  }
+                  return null;
                 },
               ),
               const SizedBox(height: 20),
@@ -58,6 +110,7 @@ class _AddFormState extends State<AddForm> {
                 decoration: const InputDecoration(
                   labelText: 'Job',
                 ),
+                value: _selectedJob,
                 items: Job.values.map((job) {
                   return DropdownMenuItem<Job>(
                     value: job,
@@ -66,21 +119,22 @@ class _AddFormState extends State<AddForm> {
                 }).toList(),
                 onChanged: (value) {
                   setState(() {
-                    selectedJob = value;
+                    _selectedJob = value;
                   });
                 },
-                value: selectedJob,
+                validator: (value) {
+                  if (value == null) {
+                    return 'Please select a job';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(height: 20),
               FilledButton(
                 style: FilledButton.styleFrom(
                   backgroundColor: Colors.lightGreen,
                 ),
-                onPressed: () {
-                  print("Name: $name");
-                  print("Age: $age");
-                  print("Job: ${selectedJob?.title}");
-                },
+                onPressed: _submitForm,
                 child: const Text(
                   "Submit",
                   style: TextStyle(
