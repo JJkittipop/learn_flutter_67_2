@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter_67_2/models/person.dart';
+// Step 17: Routing
+import 'package:learn_flutter_67_2/main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: const AddForm(),  // ครอบด้วย MaterialApp แล้ว
+      home: const AddForm(),
     );
   }
 }
@@ -29,7 +31,6 @@ class AddForm extends StatefulWidget {
 
 class _AddFormState extends State<AddForm> {
   final _formKey = GlobalKey<FormState>();
-
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
 
@@ -47,6 +48,7 @@ class _AddFormState extends State<AddForm> {
       final String name = _nameController.text.trim();
       final int age = int.parse(_ageController.text.trim());
 
+      // เพิ่มข้อมูลเข้า personList (ตรวจว่าคุณต้องแก้ personList ให้เป็น List ปกติ ไม่ใช่ const)
       personList.add(Person(name: name, age: age, job: _selectedJob!));
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -56,9 +58,16 @@ class _AddFormState extends State<AddForm> {
       _formKey.currentState!.reset();
       _nameController.clear();
       _ageController.clear();
+
       setState(() {
         _selectedJob = Job.doctor;
       });
+
+      // ไปหน้าอื่นหรือกลับก็ได้ แล้วแต่คุณ
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (ctx) => const MyApp()),
+      );
     }
   }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+// Step 17: Routing
+import 'package:learn_flutter_67_2/screen/addForm.dart';
 
 // Enum งาน พร้อมข้อมูลชื่อ, รูป, สี
 enum Job {
@@ -40,52 +42,80 @@ class Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: personList.length,
-      itemBuilder: (context, index) {
-        final person = personList[index];
-        return Container(
-          width: double.infinity, // เพิ่มเพื่อให้เต็มความกว้าง
-          margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: person.job.color.withOpacity(0.7),  // ใช้สีพื้นหลังตาม job.color
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // ชื่อและงาน
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    person.name,
-                    style: GoogleFonts.kanit(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            itemCount: personList.length,
+            itemBuilder: (context, index) {
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: personList[index].job.color,
+                ),
+                margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // ข้อมูลภายใน Column
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          personList[index].name,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Age: ${personList[index].age}',
+                          style: GoogleFonts.prompt(
+                            fontSize: 20,
+                            color: const Color.fromARGB(255, 255, 251, 3),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Job: ${personList[index].job.title}',
+                          style: GoogleFonts.prompt(
+                            fontSize: 16,
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Text(
-                    person.job.title,
-                    style: GoogleFonts.kanit(
-                      fontSize: 18,
-                      color: Colors.white70,
+                    Image.asset(
+                      personList[index].job.image,
+                      width: 70,
+                      height: 70,
                     ),
-                  ),
-                ],
-              ),
-              // รูปงาน
-              Image.asset(
-                person.job.image,
-                width: 50,
-                height: 50,
-              ),
-            ],
+                  ],
+                ),
+              );
+            },
           ),
-        );
-      },
+        ),
+        SizedBox(
+          width: 100,
+          height: 100,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const AddForm()),
+              );
+            },
+            icon: const Icon(
+              Icons.add,
+              size: 40,
+              color: Colors.pinkAccent,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
